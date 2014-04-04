@@ -62,6 +62,14 @@ template "/etc/init.d/redis-sentinel" do
   group "root"
 end
 
+execute "Adding redis-server to init.d" do
+    command "update-rc.d redis-server defaults"
+end
+
+execute "Adding redis-sentinel to init.d" do
+    command "update-rc.d redis-sentinel defaults"
+end
+
 execute "Start redis-server" do
     command "/etc/init.d/redis-server start"
 end
